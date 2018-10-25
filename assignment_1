@@ -1,0 +1,61 @@
+---
+title: "R Course Assignment 1 - Jonathan Scheer"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(data.table)
+library(dplyr)
+library(ggplot2)
+library(forcats)
+hems <- read.csv("https://bit.ly/2RlqXy5")
+hems_agg <- read.csv("https://bit.ly/2y7k3Ui")
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Exercise #1
+
+Compare all agencies to each other in terms of their total incidents volume. Which agency responded to the highest number of incidents? Which agency responded to the lowest number of incidents?
+
+```{r}
+hems$agency <- as.factor(hems$agency)
+hems$agency <- fct_infreq(hems$agency)
+ggplot(hems, aes(agency))+
+  geom_bar()+
+  coord_flip()
+```
+
+## Exercise # 2
+
+The data frame contains a column called patient_acuity which has the following values: ‘Critical (Red)’, ‘Emergent (Yellow)’, ‘Not Recorded’, ‘Lower Acuity (Green)’, and ‘Not Applicable’.
+Find out which agency tackled the highest proportion of critical incidents.
+
+```{r}
+ggplot(hems, aes(agency, fill = patient_acuity))+
+  geom_bar()
+```
+
+## Exercise # 3
+
+1.	Review the distribution of patient_blood_pressure across different levels of patient_acuity.
+2.	Visually inspect the plot and estimate the central tendency (median) value of patient_blood_pressure across all acuity levels.
+3.	Visually inspect the plot to identify the acuity level(s) that tends to have a higher proportion of patients with blood pressure below 100.
+4.	Provide a rationalization for the type of plot you used for this exercise.
+
+
+```{r}
+ggplot(hems, aes(patient_acuity, patient_blood_pressure))+
+  geom_point()
+```
+
+## Exercise # 4
+
+1.	Create a gapminder style chart that compares all agencies with respect to their avg_reaction_time and avg_total_dur.
+2.	Interpret the chart in your own words.
+
+```{r}
+ggplot(hems_agg, aes(agency, avg_reaction_time, size = avg_total_dur))+
+  geom_point() +
+  coord_flip()
+```
