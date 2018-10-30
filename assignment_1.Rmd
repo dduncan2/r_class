@@ -26,9 +26,11 @@ ggplot(hems, aes(agency))+
   coord_flip()
 ```
 
+Air Evacs responded to the lowest number of incidents.
+
 ## Exercise # 2
 
-The data frame contains a column called patient_acuity which has the following values: ‘Critical (Red)’, ‘Emergent (Yellow)’, ‘Not Recorded’, ‘Lower Acuity (Green)’, and ‘Not Applicable’.
+The data frame contains a column called patient_acuity which has the following values: 'Critical (Red)', 'Emergent (Yellow)', 'Not Recorded', 'Lower Acuity (Green)', and 'Not Applicable'.
 Find out which agency tackled the highest proportion of critical incidents.
 
 ```{r}
@@ -36,6 +38,8 @@ ggplot(hems, aes(agency, fill = patient_acuity))+
   geom_bar() +
   coord_flip()
 ```
+
+Carilion had the highest proportion of critical incidents in their responses.
 
 ## Exercise # 3
 
@@ -47,8 +51,14 @@ ggplot(hems, aes(agency, fill = patient_acuity))+
 
 ```{r warning=FALSE}
 ggplot(hems, aes(patient_acuity, patient_blood_pressure))+
-  geom_point()
+  geom_boxplot()
 ```
+
+The median value of patient_blood_pressure is around 130 across all acuity levels.
+
+Critical and Emergent values for patient_acuity tend to include a higher proportion of patients with blood pressure below 100.
+
+The box plot is useful in identifying a variable's median value and its relationship to the variable's overall distribution.
 
 ## Exercise # 4
 
@@ -58,5 +68,8 @@ ggplot(hems, aes(patient_acuity, patient_blood_pressure))+
 ```{r}
 ggplot(hems_agg, aes(agency, avg_reaction_time, size = avg_total_dur))+
   geom_point() +
+  scale_size(range = c(.5, 5))+
   coord_flip()
 ```
+
+It appears that there may be a positive relationship between the reaction time to an incident and the duration of treatment, but it is not clear; further analysis is warranted. 
