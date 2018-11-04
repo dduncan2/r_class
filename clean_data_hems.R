@@ -19,7 +19,7 @@ HEMS_responses$RespRate <- parse_number(HEMS_responses$RespRate)
 HEMS_responses$GlasgowComaScore <- parse_number(HEMS_responses$GlasgowComaScore)
 
 #create character vector for patient acuity factor levels and convert to factor
-acuity_lvl <- c("Critical (Red)", "Emergent (Yellow)", "Lower Acuity (Green)", "Dead without Resuscitation Efforts (Black)", "Not Recorded", "Not Applicable")
+acuity_lvl <- c("Critical (Red)", "Emergent (Yellow)", "Lower Acuity (Green)", "Dead without Resuscitation Efforts (Black)", "Not Applicable", "Not Recorded")
 HEMS_responses$InitialPatientAcuity <- parse_factor(HEMS_responses$InitialPatientAcuity, levels = acuity_lvl)
 
 #convert remaining character fields to factors without specified levels
