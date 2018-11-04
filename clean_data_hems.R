@@ -3,7 +3,7 @@
 library(tidyverse)
 library(readxl)
 
-#import HESM 911 response data
+#import HESM 911 response data (read_excel automatically converts datetime fields to POSIXct/POSIXt datetime format)
 HEMS_responses <- read_excel("data\\Dr. Harinder Dhindsa GEMS and HEMS Response 9-13-2018.xlsx", sheet = " HEMS 911 Responses")
 
 #create vector of new column names
