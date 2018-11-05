@@ -1,4 +1,4 @@
-group_HEMS <- HEMS_responses %>% 
+HEMS_difftime <- HEMS_responses %>% 
    group_by(Agency) %>% 
    summarise(
          totaltime = as.numeric(mean(DestinationArrivalDateTime-UnitNotifiedDateTime, na.rm = TRUE), units = "hours"),
