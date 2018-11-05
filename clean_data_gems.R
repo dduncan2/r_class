@@ -3,7 +3,7 @@
 library(tidyverse)
 library(readxl)
 
-#import HESM 911 response data
+#import GEMS faculty transport data
 GEMS_fac_transports <- read_excel("data\\Dr. Harinder Dhindsa GEMS and HEMS Response 9-13-2018.xlsx", sheet = "GEMS Interfacility Transports")
 
 #create vector of new column names
